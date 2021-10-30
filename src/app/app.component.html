@@ -1,0 +1,39 @@
+<div *ngIf="students" class="top-container">
+  <div class="mid-container">
+    <div class="form-group">
+      <input type="search"
+             class="form-control search"
+             placeholder="Enter name string"
+             [formControl]="nameSearch">
+      <input type="search"
+             class="form-control search"
+             placeholder="Enter tag string"
+             [formControl]="tagSearch">
+    </div>
+    <div class="card" *ngFor="let student of students | nameFilter: nameSearch.value | tagFilter: tagSearch.value; let i = index">
+      <div fxFlex="40">
+        <img class="img" src="{{student.pic}}" alt="Avatar" style="width:150px;height:150px;">
+      </div>
+      <div fxFlex="50">
+        <h1><b>{{student.firstName}} {{student.lastName}}</b></h1>
+        <p>Email: {{student.email}}</p>
+        <p>Company: {{student.company}}</p>
+        <p>Email: {{student.skill}}</p>
+        <p>Grades: {{student.grades | sum}}</p>
+        <div class="tag-wrapper">
+          <span class="tag" *ngFor="let tag of student.tags;">{{tag}}</span>
+        </div>
+          <input type="text"
+                 class="form-control tag" [formControl]="tag" (keyup.enter)="addNewTag(student.id, tag.value)">
+         <div class="expand" *ngIf="student.expanded">
+          <div class="grade" *ngFor="let grade of student.grades; let i = index;">
+            Test {{i+1}}: {{grade}}%
+          </div>
+        </div>
+      </div>
+      <button (click)="clickToExpandClose(student.id)">
+        <span class="material-icons md-28">{{student.expanded ? 'expand_less' : 'expand_more'}}</span>
+      </button>
+    </div>
+  </div>
+</div>

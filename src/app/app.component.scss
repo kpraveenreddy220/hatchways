@@ -1,0 +1,80 @@
+.top-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.mid-container {
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 600px;
+  overflow: auto;
+  width: 70%;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  background: white;
+  padding: 20px;
+  flex: 1;
+  .img {
+    border-radius: 50%;
+    border: 1px solid gray;
+  }
+  &:hover {
+    background: lightcyan;
+    transition: 0.5s;
+  }
+  &.expand {
+    transition: 1s;
+  }
+}
+
+.form-group {
+  position: -webkit-sticky; /* for Safari */
+  position: sticky;
+  top: 0;
+  align-self: flex-start; /* <-- this is the fix */
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-bottom: 2px solid lightblue;
+  height: 50px;
+  &.search {
+    background-color: aliceblue;
+  }
+  &.tag {
+    height: 30px;
+    padding: 3px;
+    background-color: lightyellow;
+  }
+}
+.tag-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  .tag {
+    height: 20px;
+    padding: 4px;
+    margin: 4px;
+    border-radius: 3px;
+    background-color: lightgrey;
+  }
+}
+
+.grade {
+  padding: 3px 0px;
+}
+
